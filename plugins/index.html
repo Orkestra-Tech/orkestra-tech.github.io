@@ -33,7 +33,7 @@ to <code class="highlighter-rouge">build.sbt</code>:</p>
   <span class="n">sh</span><span class="o">(</span><span class="n">s</span><span class="s">"echo 'Hey!' &gt; ${file.getName}"</span><span class="o">)</span>
 
   <span class="k">val</span> <span class="n">s3Bucket</span> <span class="k">=</span> <span class="s">"some-bucket-name"</span>
-  <span class="n">println</span><span class="o">(</span><span class="n">s</span><span class="s">"Uploading ${file.getName} to S3 bucket s3Bucket"</span><span class="o">)</span>
+  <span class="n">println</span><span class="o">(</span><span class="n">s</span><span class="s">"Uploading ${file.getName} to S3 bucket $s3Bucket"</span><span class="o">)</span>
   <span class="n">transferManager</span><span class="o">.</span><span class="n">upload</span><span class="o">(</span><span class="n">s3Bucket</span><span class="o">,</span> <span class="n">file</span><span class="o">.</span><span class="n">getName</span><span class="o">,</span> <span class="n">file</span><span class="o">).</span><span class="n">waitForCompletion</span><span class="o">()</span>
 <span class="o">}</span>
 </code></pre></div></div>
