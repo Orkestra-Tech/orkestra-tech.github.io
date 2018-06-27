@@ -24,7 +24,7 @@ to <code class="highlighter-rouge">build.sbt</code>:</p>
 <span class="k">import</span> <span class="nn">tech.orkestra.utils.BlockingShells._</span>
 
 <span class="c1">// We need the implicit workDir in order to know in which directory we are working in
-</span><span class="k">def</span> <span class="n">uploadToS3</span><span class="o">()(</span><span class="k">implicit</span> <span class="n">workDir</span><span class="k">:</span> <span class="kt">Directory</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class="k">def</span> <span class="n">uploadToS3</span><span class="o">()(</span><span class="k">implicit</span> <span class="n">workDir</span><span class="k">:</span> <span class="kt">Directory</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
   <span class="k">val</span> <span class="n">s3</span> <span class="k">=</span> <span class="nc">AmazonS3ClientBuilder</span><span class="o">.</span><span class="n">standard</span><span class="o">.</span><span class="n">withRegion</span><span class="o">(</span><span class="nc">Regions</span><span class="o">.</span><span class="nc">EU_WEST_1</span><span class="o">).</span><span class="n">build</span><span class="o">()</span>
   <span class="k">val</span> <span class="n">transferManager</span> <span class="k">=</span> <span class="nc">TransferManagerBuilder</span><span class="o">.</span><span class="n">standard</span><span class="o">.</span><span class="n">withS3Client</span><span class="o">(</span><span class="n">s3</span><span class="o">).</span><span class="n">build</span><span class="o">()</span>
 
@@ -52,7 +52,7 @@ Let’s add the dependency to <code class="highlighter-rouge">build.sbt</code>:<
 <span class="c1">// Orkestra already uses Akka so we can import the implicits for the Slack too
 </span><span class="k">import</span> <span class="nn">tech.orkestra.utils.AkkaImplicits._</span>
 
-<span class="k">def</span> <span class="n">sendSlackMessage</span><span class="o">()</span> <span class="k">=</span> <span class="o">{</span>
+<span class="k">def</span> <span class="n">sendSlackMessage</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
   <span class="k">val</span> <span class="n">slack</span> <span class="k">=</span> <span class="nc">SlackApiClient</span><span class="o">(</span><span class="s">"slack token"</span><span class="o">)</span>
   <span class="n">slack</span><span class="o">.</span><span class="n">postChatMessage</span><span class="o">(</span><span class="s">"channel name"</span><span class="o">,</span> <span class="s">"Hello!"</span><span class="o">)</span>
 <span class="o">}</span>
